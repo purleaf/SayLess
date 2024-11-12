@@ -4,12 +4,15 @@ import tempfile
 import openai
 from pydub import AudioSegment
 import logging
-
+from dotenv import load_dotenv
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import (
     MessageEvent, AudioMessage, TextSendMessage
 )
+import os
+
+load_dotenv()
 
 app = Flask(__name__)
 
@@ -18,13 +21,13 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Set your Channel Access Token and Channel Secret
-LINE_CHANNEL_ACCESS_TOKEN = 'ACCESS_TOKEN'
-LINE_CHANNEL_SECRET = 'CHANNEL_SECRET'
+LINE_CHANNEL_ACCESS_TOKEN = os.getenv("LINE_CHANNEL_ACCESS_TOKEN")
+LINE_CHANNEL_SECRET = os.getenv("LINE_CHANNEL_SECRET")
 line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(LINE_CHANNEL_SECRET)
 
 # Set your OpenAI API key
-openai.api_key = 'OPENAI_API_KEY'
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Dictionary to store user messages (for handling multiple audio messages)
 user_audio_messages = {}

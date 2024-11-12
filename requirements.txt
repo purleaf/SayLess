@@ -1,0 +1,5 @@
+Flask
+pydub
+openai
+line-bot-sdk
+python-dotenv

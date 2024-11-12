@@ -1,0 +1,21 @@
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE settings
+.idea/
+.vscode/
+
+# System files
+.DS_Store
+
+# Optional: Logs, local settings
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+
+*Dockerfile
